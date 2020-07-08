@@ -1,4 +1,5 @@
 import _store from "../store.js"
+import Cars from "../Models/cars.js"
 
 class CarsService {
   constructor() {

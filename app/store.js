@@ -4,7 +4,9 @@ import Cars from "./Models/cars.js"
 let _state = {
   activeValue: new Value({ title: "Value" }),
   /** @type {Value[]} */
-  values: []
+  values: [],
+  /** @type {Value[]} */
+  cars: []
 };
 
 class Store {
