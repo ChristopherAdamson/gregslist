@@ -1,13 +1,22 @@
 import _store from "../store.js"
-import Cars from "../Models/cars.js"
+import Car from "../Models/cars.js"
 
 class CarsService {
   constructor() {
-    console.log("hello from car service")
   }
+
+
+  addCar(rawCarData) {
+    let newCar = new Car(rawCarData)
+    _store.addCar(newCar)
+  }
+
+
+  deleteCar(carId) {
+    _store.deleteCar(carId)
+  }
+
 }
-
-
 const SERVICE = new CarsService()
 
 export default SERVICE
