@@ -1,5 +1,6 @@
 import _carsService from "../Services/CarService.js"
 import _store from "../store.js"
+import Car from "../Models/cars.js"
 
 function _drawCars() {
   let template = ""
@@ -8,10 +9,10 @@ function _drawCars() {
   document.getElementById("cars").innerHTML = template
 }
 
+
 export default class CarController {
   constructor() {
     _drawCars()
-
   }
   addCar(event) {
     event.preventDefault();
@@ -33,4 +34,42 @@ export default class CarController {
     _carsService.deleteCar(carId)
     _drawCars()
   }
+
+  drawForm() {
+    let template = `
+        <form onsubmit="app.carController.addCar(event)" class="col-8">
+        <div class="form-group">
+            <label for="make">Make</label>
+            <input type="text" name="make" class="form-control" placeholder="Enter Make...">
+        </div>
+        <div class="form-group">
+            <label for="model">Model</label>
+            <input type="text" name="model" class="form-control" placeholder="Enter Model...">
+        </div>
+        <div class="form-group">
+            <label for="year">Year</label>
+            <input type="text" name="year" class="form-control" placeholder="Enter Year...">
+        </div>
+        <div class="form-group">
+            <label for="price">price</label>
+            <input type="number" name="price" class="form-control" placeholder="Enter Price...">
+        </div>
+        <div class="form-group">
+            <label for="imgUrl">Image Url</label>
+            <input type="text" name="imgUrl" class="form-control" placeholder="Enter Image Url...">
+        </div>
+    
+        <div class="form-group">
+            <label for="description">Description</label>
+            <input type="text" name="description" class="form-control" placeholder="Enter Description...">
+        </div>
+        <button type="submit">Submit</button>
+    
+    </form>
+        `
+    document.getElementById("carForm").innerHTML = template
+  }
 }
+
+
+
