@@ -1,12 +1,15 @@
 import Value from "./Models/Value.js";
 import Car from "./Models/cars.js"
+import House from "./Models/House.js"
 
 let _state = {
   activeValue: new Value({ title: "Value" }),
   /** @type {Value[]} */
   values: [],
   /** @type {Car[]} */
-  cars: []
+  cars: [],
+  /** @type {House[]} */
+  houses: []
 };
 
 class Store {
@@ -22,7 +25,9 @@ class Store {
     _state.cars.push(newCar)
   }
 
-
+  addHouse(newHouse) {
+    _state.houses.push(newHouse)
+  }
 
 
   /**
