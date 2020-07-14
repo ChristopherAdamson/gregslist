@@ -5,20 +5,23 @@ export default class House {
   constructor(data) {
     this.id = data._id || data.id
     this.price = data.price
-    this.sqFt = data.sqFt
+    this.bedrooms = data.bedrooms
     this.year = data.year
     this.imgUrl = data.imgUrl || "//placehold.it/200x200"
     this.description = data.description
+    this.bathrooms = data.bathrooms
+    this.levels = data.levels
 
   }
   get Template() {
     return `
     <div class="col-3 border rounded shadow">
-        <h1>Price ${this.price}</h1>
-        <h1>Square footage ${this.sqFt}</h1>
-        <h1>year built ${this.year}</h1>
+        <h3>Price: ${this.price}</h3>
+        <h5> Bed: ${this.bedrooms}</h5>
+        <h5> Bath: ${this.bathrooms}</h5>
+        <h5>year built ${this.year}</h5>
         <img class="img-fluid" src=${this.imgUrl} alt="">
-          <h1>${this.description}</h1>
+          <p> ${this.levels} stories <br> ${this.description}</p>
           <button class="btn btn-danger" onclick="app.houseController.deleteHouse('${this.id}')">Delete</button>
 </div>
       `

@@ -31,9 +31,66 @@ export default class CarController {
   }
 
   deleteCar(carId) {
-    _carsService.deleteCar(carId)
-    _drawCars()
+    let validator = window.confirm("Are you sure you want to delete this?")
+    if (validator) {
+      _carsService.deleteCar(carId)
+    }
   }
+  editCar(event, carId) {
+    event.preventDefault()
+    let formData = event.target
+    let editCarData = {
+      make: formData.make.value,
+      model: formData.model.value,
+      year: formData.year.value,
+      price: formData.price.value,
+      imgUrl: formData.imgUrl.value,
+      description: formData.description.value,
+    }
+    _carsService.editCar(editCarData, carId)
+    formData.reset()
+
+  }
+  editForm(carId) {
+    let foundCar = _store.State.cars.find(car => car.id = carId)
+    console.log(foundCar);
+
+    let template = `
+        <form  onsubmit="app.carController.editCar(event, '${carId}')" class="col-8">
+        <div class="form-group">
+            <label for="make">Make</label>
+            <input type="text" name="make" class="form-control" value="${foundCar.make}">
+        </div>
+        <div class="form-group">
+            <label for="model">Model</label>
+            <input type="text" name="model" class="form-control" value="${foundCar.model}">
+        </div>
+        <div class="form-group">
+            <label for="year">Year</label>
+            <input type="text" name="year" class="form-control" value="${foundCar.year}">
+        </div>
+        <div class="form-group">
+            <label for="price">price</label>
+            <input type="number" name="price" class="form-control" value="${foundCar.price}">
+        </div>
+        <div class="form-group">
+            <label for="imgUrl">Image Url</label>
+            <input type="text" name="imgUrl" class="form-control" value="${foundCar.imgUrl}">
+        </div>
+    
+        <div class="form-group">
+            <label for="description">Description</label>
+            <input type="text" name="description" class="form-control" value="${foundCar.description}">
+        </div>
+        <button  type="submit">Submit</button>
+    
+    </form>
+`
+    document.getElementById("carEdit").innerHTML = template
+
+
+  }
+
 
   carForm() {
     _carsService.getCars()

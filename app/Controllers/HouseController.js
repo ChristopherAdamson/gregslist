@@ -23,13 +23,21 @@ export default class HouseController {
     let formData = event.target
     let rawHouseData = {
       price: formData.price.value,
-      sqFt: formData.sqFt.value,
+      bedrooms: formData.bedrooms.value,
       year: formData.year.value,
       description: formData.description.value,
+      bathrooms: formData.bathrooms.value,
+      levels: formData.levels.value,
     }
     _HouseService.addHouse(rawHouseData)
     formData.reset()
-    _drawHouse
+
+  }
+  deleteHouse(houseId) {
+    let validator = window.confirm("Are you sure you want to delete this?")
+    if (validator) {
+      _HouseService.deleteHouse(houseId)
+    }
   }
 
   houseForm() {
@@ -41,9 +49,19 @@ export default class HouseController {
         <input type="number" name="price" class="form-control" placeholder="Enter Price...">
   </div>
         <div class="form-group">
-          <label for="sqFt">Square Feet</label>
-          <input type="text" name="sqFt" class="form-control" placeholder="Enter Square Feet...">
+          <label for="bedrooms">Bedrooms</label>
+          <input type="number" name="bedrooms" class="form-control" placeholder="How many Bedrooms..?">
   </div>
+  </div>
+  <div class="form-group">
+    <label for="bathrooms">Bathrooms</label>
+    <input type="number" name="bathrooms" class="form-control" placeholder="How many Bathrooms..?">
+</div>
+</div>
+<div class="form-group">
+  <label for="levels">Floors?</label>
+  <input type="number" name="levels" class="form-control" placeholder="How many Floors?..?">
+</div>
           <div class="form-group">
             <label for="year">Year</label>
             <input type="number" name="year" class="form-control" placeholder="Enter Year...">

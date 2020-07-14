@@ -13,13 +13,14 @@ export default class Car {
   get Template() {
     return `
     <div class="col-3 border rounded shadow">
-        <h1>make ${this.make}</h1>
-        <h1>model ${this.model}</h1>
-        <h1>year ${this.year}</h1>
-        <h1>price ${this.price}</h1>
+        <h3>make: ${this.make}</h3>
+        <h5>model: ${this.model}</h5>
+        <h5>year: ${this.year}</h5>
+        <h5>price: ${this.price}</h5>
         <img class="img-fluid" src=${this.imgUrl} alt="">
-          <h1>${this.description}</h1>
-          <button class="btn btn-danger" onclick="app.carController.deleteCar('${this.id}')">Delete</button>
+          <p>${this.description}</p>
+          <button class="btn btn-danger float-left" onclick="app.carController.deleteCar('${this.id}')">Delete</button>
+          <button data-toggle="modal" data-target="#exampleModalCenter2" class="btn btn-danger float-right" onclick="app.carController.editForm('${this.id}')">Edit</button>
 </div>
       `
   }

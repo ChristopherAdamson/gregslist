@@ -10,6 +10,7 @@ const _api = axios.create({
 
 
 class HouseService {
+
   constructor() {
   }
   getHouses() {
@@ -20,10 +21,17 @@ class HouseService {
     }).catch(err => console.error(err))
   }
 
-
+  deleteHouse(houseId) {
+    _api.delete("houses/" + houseId).then(res => {
+      this.getHouses()
+    }).catch(err => console.error(err))
+  }
 
   addHouse(rawHouseData) {
-
+    _api.post("houses", rawHouseData).then(res => {
+      console.log(res);
+      this.getHouses()
+    }).catch(err => console.error(err))
   }
 
 }
