@@ -20,7 +20,7 @@ export default class Car {
         <img class="img-fluid" src=${this.imgUrl} alt="">
           <p>${this.description}</p>
           <button class="btn btn-danger float-left" onclick="app.carController.deleteCar('${this.id}')">Delete</button>
-          <button data-toggle="modal" data-target="#exampleModalCenter2" class="btn btn-danger float-right" onclick="app.carController.editForm('${this.id}')">Edit</button>
+          <button data-toggle="modal" data-target="#exampleModalCenter2" class="btn btn-success float-right" onclick="app.carController.editForm('${this.id}')">Edit</button>
 </div>
       `
   }

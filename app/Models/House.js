@@ -23,6 +23,7 @@ export default class House {
         <img class="img-fluid" src=${this.imgUrl} alt="">
           <p> ${this.levels} stories <br> ${this.description}</p>
           <button class="btn btn-danger" onclick="app.houseController.deleteHouse('${this.id}')">Delete</button>
+          <button data-toggle="modal" data-target="#exampleModalCenter2" class="btn btn-success float-right" onclick="app.houseController.editForm('${this.id}')">Edit</button>
 </div>
       `
   }

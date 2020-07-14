@@ -86,7 +86,7 @@ export default class CarController {
     
     </form>
 `
-    document.getElementById("carEdit").innerHTML = template
+    document.getElementById("edit").innerHTML = template
 
 
   }

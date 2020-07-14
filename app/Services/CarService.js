@@ -31,12 +31,7 @@ class CarsService {
       this.getCars()
     }).catch(err => console.error(err))
   }
-  // make: formData.make.value,
-  // model: formData.model.value,
-  // year: formData.year.value,
-  // price: formData.price.value,
-  // imgUrl: formData.imgUrl.value,
-  // description: formData.description.value
+
   editCar(editCarData, carId) {
     let updatedCar = _store.State.cars.find(car => car.id = carId)
     updatedCar.make = editCarData.make
