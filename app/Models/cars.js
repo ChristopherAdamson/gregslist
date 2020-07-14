@@ -1,9 +1,7 @@
 
-let id = 50
-
 export default class Car {
   constructor(data) {
-    this.id = id++
+    this.id = data._id || data.id
     this.make = data.make
     this.model = data.model
     this.year = data.year
@@ -19,7 +17,7 @@ export default class Car {
         <h1>model ${this.model}</h1>
         <h1>year ${this.year}</h1>
         <h1>price ${this.price}</h1>
-        <img src=${this.imgUrl} alt="">
+        <img class="img-fluid" src=${this.imgUrl} alt="">
           <h1>${this.description}</h1>
           <button class="btn btn-danger" onclick="app.carController.deleteCar('${this.id}')">Delete</button>
 </div>

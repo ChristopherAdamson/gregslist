@@ -6,13 +6,13 @@ function _drawCars() {
   let template = ""
   let cars = _store.State.cars
   cars.forEach(car => template += car.Template)
-  document.getElementById("cars").innerHTML = template
+  document.getElementById("items").innerHTML = template
 }
 
 
 export default class CarController {
   constructor() {
-    _drawCars()
+    _store.subscribe("cars", _drawCars)
   }
   addCar(event) {
     event.preventDefault();
@@ -35,7 +35,9 @@ export default class CarController {
     _drawCars()
   }
 
-  drawForm() {
+  carForm() {
+    _carsService.getCars()
+
     let template = `
         <form onsubmit="app.carController.addCar(event)" class="col-8">
         <div class="form-group">
@@ -67,7 +69,7 @@ export default class CarController {
     
     </form>
         `
-    document.getElementById("carForm").innerHTML = template
+    document.getElementById("forms").innerHTML = template
   }
 }
 
